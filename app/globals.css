@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* Retint the "blue" accent scale used throughout the app to a racing
+   amber/pit-board palette. Every existing bg-blue-*, text-blue-*,
+   border-blue-*, from-blue-*/to-blue-* class in the app picks this up
+   automatically — no component changes needed. */
+@theme {
+  --color-blue-50: #fdf6ea;
+  --color-blue-100: #fbead0;
+  --color-blue-200: #f7d7a3;
+  --color-blue-300: #f3c179;
+  --color-blue-400: #f5a623;
+  --color-blue-500: #e6960f;
+  --color-blue-600: #cc830c;
+  --color-blue-700: #a3690a;
+  --color-blue-800: #7a4f08;
+  --color-blue-900: #4d3205;
+  --color-blue-950: #2c1c02;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+}
+
+/* Racing-timing-tower headline face for every heading in the app */
+h1,
+h2,
+h3 {
+  font-family: "Rajdhani", "Inter", Arial, Helvetica, sans-serif;
+  letter-spacing: 0.01em;
+}
+
+/* Digital/timing-tower numerals for anything monospaced (timers, stats) */
+.font-mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace !important;
+}
+
+/* Thin amber "pit lane" stripe along the very top of the app as a signature accent */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 50;
+  background: repeating-linear-gradient(
+    90deg,
+    #f5a623 0px,
+    #f5a623 28px,
+    #14161a 28px,
+    #14161a 56px
+  );
+  pointer-events: none;
+}
